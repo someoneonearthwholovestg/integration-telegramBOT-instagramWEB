@@ -44,6 +44,7 @@ loginScene.on('text', (ctx) => {
             const login = await localClient.login();
             console.log(login);
             if (!login.authenticated) {
+               ctx.scene.leave();
                return ctx.reply('Problemi di autenticazione.');
             }
 
@@ -57,6 +58,7 @@ loginScene.on('text', (ctx) => {
                'Login Avvenuto correttamente\n\nIncolla il messaggio generato dal bot per applicare automaticamente i like alle foto contenute.'
             );
          } catch (error) {
+            ctx.scene.leave();
             return ctx.reply('Problemi di autenticazione.');
          }
       })();
